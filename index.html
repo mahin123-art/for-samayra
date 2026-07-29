@@ -1,1 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>From Mahin to Samayra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      background: #f7efe9;
+      color: #613e43;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .bg-flower {
+      position: fixed;
+      width: 320px;
+      opacity: 0.25;
+      pointer-events: none;
+      z-index: 0;
+      filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.05));
+    }
+    .bg-top-left { top: -40px; left: -40px; transform: rotate(-15deg); }
+    .bg-top-right { top: -40px; right: -40px; transform: scaleX(-1) rotate(-15deg); }
+
+    .container {
+      width: 100%;
+      max-width: 800px;
+      padding: 20px;
+      text-align: center;
+      z-index: 10;
+      position: relative;
+    }
+
+    .screen {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+      transform: translateY(15px);
+    }
+
+    .screen.active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h1.script-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.8rem;
+      font-weight: normal;
+      color: #8c4a52;
+      line-height: 1.2;
+      margin-bottom: 10px;
+      text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    p.sub-text {
+      font-size: 1.25rem;
+      color: #7a585c;
+      letter-spacing: 0.5px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #d8898f, #c7737a);
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      font-size: 1.1rem;
+      font-family: 'Cormorant Garamond', serif;
+      letter-spacing: 1px;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(216, 137, 143, 0.4);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(216, 137, 143, 0.6);
+      background: linear-gradient(135deg, #cb7c82, #b86269);
+    }
+
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      width: 100%;
+      margin: 20px 0;
+    }
+
+    .polaroid {
+      background: #ffffff;
+      padding: 10px 10px 25px 10px;
+      border-radius: 4px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transform: rotate(var(--rotation));
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .polaroid::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 15px;
+      background: rgba(230, 220, 210, 0.7);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .polaroid:hover {
+      transform: scale(1.05) rotate(0deg);
+      z-index: 5;
+    }
+
+    .polaroid img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+
+    .letter-card {
+      background: #fcf8f2;
+      border: 1px solid #ebdcd0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+      padding: 40px 30px;
+      position: relative;
+      max-width: 650px;
+      text-align: left;
+      line-height: 1.8;
+      font-size: 1.2rem;
+      color: #4a3437;
+    }
+
+    .letter-card::after {
+      content: '♥';
+      position: absolute;
+      bottom: 15px;
+      right: 20px;
+      font-size: 1.2rem;
+      color: #c7737a;
+      opacity: 0.5;
+    }
+
+    .click-hint {
+      margin-top: 25px;
+      font-style: italic;
+      color: #a0787d;
+      font-size: 0.95rem;
+      cursor: pointer;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    .petal {
+      position: fixed;
+      background-color: #f7d2d6;
+      border-radius: 15px 0px 15px 0px;
+      opacity: 0.7;
+      pointer-events: none;
+      animation: fall 8s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(105vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <svg class="bg-flower bg-top-left" viewBox="0 0 100 100" fill="#a86b73">
+    <path d="M50 0 C60 30 90 40 100 50 C70 60 60 90 50 100 C40 70 10 60 0 50 C30 40 40 10 50 0 Z"/>
+  </svg>
+  <svg class="bg-flower bg-top-right" viewBox="0 0 100 100" fill="#a86b73">
+    <path d="M50 0 C60 30 90 40 100 50 C70 60 60 90 50 100 C40 70 10 60 0 50 C30 40 40 10 50 0 Z"/>
+  </svg>
+
+  <div class="container">
+
+    <!-- SCREEN 1 -->
+    <div id="screen1" class="screen active">
+      <h1 class="script-title">From Mahin to Samayra</h1>
+      <p class="sub-text">for the most special person in my life ♥</p>
+      <button class="btn" onclick="nextScreen(2)">
+        Click to begin <span>♡</span>
+      </button>
+    </div>
+
+    <!-- SCREEN 2 -->
+    <div id="screen2" class="screen">
+      <h1 class="script-title" style="font-size: 3rem;">Our Favorite Moments</h1>
+      <p class="sub-text" style="margin-bottom: 15px;">Every moment with you is a favorite memory.</p>
+      
+      <div class="gallery-container">
+        <div class="polaroid" style="--rotation: -3deg;">
+          <img src="photo1.jpeg" alt="Mahin and Samayra">
+        </div>
+        <div class="polaroid" style="--rotation: 2deg;">
+          <img src="photo2.jpeg" alt="Mahin and Samayra">
+        </div>
+        <div class="polaroid" style="--rotation: -2deg;">
+          <img src="photo3.jpeg" alt="Mahin and Samayra">
+        </div>
+        <div class="polaroid" style="--rotation: 4deg;">
+          <img src="photo4.jpeg" alt="Mahin and Samayra">
+        </div>
+      </div>
+
+      <div class="click-hint" onclick="nextScreen(3)" style="margin-top: 30px;">
+        ( Click anywhere for a small letter ♡ )
+      </div>
+    </div>
+
+    <!-- SCREEN 3 -->
+    <div id="screen3" class="screen">
+      <div class="letter-card">
+        <h2 class="script-title" style="font-size: 2.8rem; text-align: left; margin-bottom: 15px;">To my dearest,</h2>
+        <p>
+          The best and the prettiest girl in my eyes, thank you for being the best but also the weirdest girlfriend. You stayed with me even though i make so many mistakes and make you angry every single day and i cannot thank you enough for that. I am always trying to treat you better and make you feel loved as i love you more than anything ever.
+        </p>
+        <br>
+        <p>
+          I will keep loving you forever and change my self in any way that makes you feel that i deserve a princess like you. Please never give up on me because Mahin loves you so so sooo much and i will probably go insane without you. Happy girlfriends day to my beautiful girl Samayra.
+        </p>
+      </div>
+
+      <div style="margin-top: 30px;">
+        <button class="btn" onclick="nextScreen(1)">
+          Click to replay ↺
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function nextScreen(screenNumber) {
+      const screens = document.querySelectorAll('.screen');
+      screens.forEach(screen => screen.classList.remove('active'));
+      
+      const current = document.getElementById(`screen${screenNumber}`);
+      if (current) {
+        current.classList.add('active');
+      }
+    }
+
+    document.getElementById('screen2').addEventListener('click', function(e) {
+      if(!e.target.closest('.polaroid')) {
+        nextScreen(3);
+      }
+    });
+
+    function createPetal() {
+      const petal = document.createElement('div');
+      petal.classList.add('petal');
+      
+      const size = Math.random() * 12 + 8;
+      petal.style.width = `${size}px`;
+      petal.style.height = `${size}px`;
+      petal.style.left = `${Math.random() * 100}vw`;
+      petal.style.animationDuration = `${Math.random() * 5 + 5}s`;
+      
+      document.body.appendChild(petal);
+
+      setTimeout(() => {
+        petal.remove();
+      }, 10000);
+    }
+
+    setInterval(createPetal, 400);
+  </script>
+</body>
+</html>
