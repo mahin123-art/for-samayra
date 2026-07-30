@@ -24,57 +24,57 @@ justify-content: center;
 align-items: center;
 overflow-x: hidden;
 position: relative;
-background-color: #1a0d14;
+background-color: #1a0812;
 }
 
-/* Live Moving Background Focused on True Oriental/Stargazer Lilies */
+/* Embedded Animated Oriental Lily Canvas Background */
 .bg-moving-picture {
 position: fixed;
 top: -5%;
 left: -5%;
 width: 110vw;
 height: 110vh;
-background-image: linear-gradient(rgba(25, 10, 18, 0.45), rgba(18, 10, 15, 0.55)),
-url('https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1920&auto=format&fit=crop');
-background-size: cover;
-background-position: center;
 z-index: 0;
-animation: kenburnsStargazer 25s ease-in-out infinite alternate;
-filter: brightness(0.9) contrast(1.08);
+animation: kenburnsOriental 22s ease-in-out infinite alternate;
+/* Deep garden ambient gradient backdrop */
+background: radial-gradient(circle at 50% 40%, #58162e 0%, #2b0b18 50%, #0d0308 100%);
 }
 
-@keyframes kenburnsStargazer {
-0% {
-transform: scale(1) translate(0, 0);
-}
-50% {
-transform: scale(1.08) translate(-15px, -10px);
-}
-100% {
-transform: scale(1.15) translate(15px, 10px);
-}
+@keyframes kenburnsOriental {
+0% { transform: scale(1) translate(0, 0); }
+50% { transform: scale(1.08) translate(-15px, -10px); }
+100% { transform: scale(1.15) translate(15px, 10px); }
 }
 
-/* Darker romantic vignette overlay to make cards & text pop */
+/* Embedded SVG Pattern for Stargazer / Oriental Lilies */
+.lily-svg-bg {
+position: absolute;
+width: 100%;
+height: 100%;
+opacity: 0.35;
+mix-blend-mode: screen;
+}
+
+/* Dark Vignette Overlay */
 .bg-overlay {
 position: fixed;
 top: 0;
 left: 0;
 width: 100vw;
 height: 100vh;
-background: radial-gradient(circle at center, rgba(255, 255, 255, 0.15) 0%, rgba(20, 8, 14, 0.65) 100%);
+background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, rgba(13, 3, 8, 0.75) 100%);
 z-index: 1;
 pointer-events: none;
 }
 
-/* Floating Corner Accents (Stylized True Lily Star Shapes) */
+/* Corner Lily Vector Accents */
 .bg-flower {
 position: fixed;
 width: 250px;
-opacity: 0.65;
+opacity: 0.75;
 pointer-events: none;
 z-index: 2;
-filter: drop-shadow(0px 8px 20px rgba(0, 0, 0, 0.45));
+filter: drop-shadow(0px 8px 20px rgba(0, 0, 0, 0.6));
 animation: floatBg 6s ease-in-out infinite alternate;
 }
 .bg-top-left { top: -20px; left: -20px; transform: rotate(-12deg); }
@@ -87,7 +87,7 @@ animation: floatBg 6s ease-in-out infinite alternate;
 100% { transform: translateY(15px) rotate(-5deg) scale(1.04); }
 }
 
-/* Screen Containers */
+/* Main Container */
 .container {
 width: 100%;
 max-width: 880px;
@@ -113,7 +113,7 @@ opacity: 1;
 transform: translateY(0) scale(1);
 }
 
-/* Typography & Shimmer Effects */
+/* Typography */
 h1.script-title {
 font-family: 'Great Vibes', cursive;
 font-size: 4.4rem;
@@ -122,11 +122,11 @@ color: #ffffff;
 line-height: 1.2;
 margin-bottom: 12px;
 animation: gentleGlow 3.5s ease-in-out infinite alternate;
-text-shadow: 0px 4px 18px rgba(0, 0, 0, 0.8);
+text-shadow: 0px 4px 18px rgba(0, 0, 0, 0.85);
 }
 
 @keyframes gentleGlow {
-0% { text-shadow: 0px 4px 18px rgba(0, 0, 0, 0.8); transform: scale(1); }
+0% { text-shadow: 0px 4px 18px rgba(0, 0, 0, 0.85); transform: scale(1); }
 100% { text-shadow: 0px 6px 28px rgba(255, 180, 200, 0.95); transform: scale(1.02); }
 }
 
@@ -135,7 +135,7 @@ font-size: 1.4rem;
 color: #fcebe8;
 letter-spacing: 0.5px;
 margin-bottom: 30px;
-text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.8);
+text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.85);
 animation: fadeInText 2s ease-in-out;
 }
 
@@ -144,7 +144,7 @@ from { opacity: 0; transform: translateY(12px); }
 to { opacity: 1; transform: translateY(0); }
 }
 
-/* Animated Glow Buttons */
+/* Glow Buttons */
 .btn {
 background: linear-gradient(135deg, #e895a2, #be5b69);
 color: #fff;
@@ -155,7 +155,7 @@ font-family: 'Cormorant Garamond', serif;
 letter-spacing: 1px;
 border-radius: 30px;
 cursor: pointer;
-box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
 transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 display: inline-flex;
 align-items: center;
@@ -196,7 +196,7 @@ animation: heartPulse 1.4s infinite;
 50% { transform: scale(1.3); }
 }
 
-/* Photo & Video Polaroid Grid Layouts */
+/* Grid Galleries */
 .photo-gallery, .video-gallery {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -209,7 +209,7 @@ margin: 20px 0;
 background: #ffffff;
 padding: 12px 12px 28px 12px;
 border-radius: 6px;
-box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
 transform: rotate(var(--rotation));
 transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 position: relative;
@@ -257,11 +257,11 @@ border-radius: 3px;
 display: block;
 }
 
-/* Unfolding Romantic Letter Card */
+/* Romantic Letter Card */
 .letter-card {
 background: linear-gradient(145deg, #ffffff, #fff8f9);
 border: 1px solid rgba(225, 170, 180, 0.5);
-box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 0 30px rgba(255, 255, 255, 0.95);
+box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), inset 0 0 30px rgba(255, 255, 255, 0.95);
 border-radius: 16px;
 padding: 48px 38px;
 position: relative;
@@ -326,7 +326,7 @@ color: #ffc2cd;
 50% { opacity: 1; transform: scale(1.04); }
 }
 
-/* Floating Petals & Sparkles Overlay */
+/* Floating Petals Overlay */
 .flower-petal {
 position: fixed;
 pointer-events: none;
@@ -352,11 +352,37 @@ opacity: 0;
 </head>
 <body>
 
-<!-- Live Moving Stargazer Lily Background Image -->
-<div class="bg-moving-picture"></div>
+<!-- Embedded Self-Contained Oriental Lily Background -->
+<div class="bg-moving-picture">
+<svg class="lily-svg-bg" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialGradient id="lilyGrad" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#ff6b8b"/>
+<stop offset="60%" stop-color="#d81b60"/>
+<stop offset="100%" stop-color="#4a001e"/>
+</radialGradient>
+</defs>
+<!-- Stargazer Lily Motif 1 -->
+<g transform="translate(200, 250) scale(1.4)">
+<path d="M0,0 Q-40,-120 0,-180 Q40,-120 0,0" fill="url(#lilyGrad)"/>
+<path d="M0,0 Q120,-40 180,0 Q120,40 0,0" fill="url(#lilyGrad)"/>
+<path d="M0,0 Q40,120 0,180 Q-40,120 0,0" fill="url(#lilyGrad)"/>
+<path d="M0,0 Q-120,40 -180,0 Q-120,-40 0,0" fill="url(#lilyGrad)"/>
+<circle cx="0" cy="0" r="14" fill="#ffee55"/>
+</g>
+<!-- Stargazer Lily Motif 2 -->
+<g transform="translate(600, 550) scale(1.2)">
+<path d="M0,0 Q-40,-120 0,-180 Q40,-120 0,0" fill="url(#lilyGrad)"/>
+<path d="M0,0 Q120,-40 180,0 Q120,40 0,0" fill="url(#lilyGrad)"/>
+<path d="M0,0 Q40,120 0,180 Q-40,120 0,0" fill="url(#lilyGrad)"/>
+<path d="M0,0 Q-120,40 -180,0 Q-120,-40 0,0" fill="url(#lilyGrad)"/>
+<circle cx="0" cy="0" r="14" fill="#ffee55"/>
+</g>
+</svg>
+</div>
 <div class="bg-overlay"></div>
 
-<!-- Corner Lily SVGs -->
+<!-- Decorative Corner Lily Vectors -->
 <svg class="bg-flower bg-top-left" viewBox="0 0 100 100" fill="#f4a8b5">
 <path d="M50 5 L60 38 L95 50 L60 62 L50 95 L40 62 L5 50 L40 38 Z"/>
 <circle cx="50" cy="50" r="8" fill="#ffffff"/>
@@ -516,7 +542,7 @@ document.getElementById('screen3').addEventListener('click', function(e) {
 if (!e.target.closest('.polaroid')) nextScreen(4);
 });
 
-// Floating Petals & Floral Accent Animation Overlay
+// Floating Petals Animation Overlay
 function createFlowerPetal() {
 const petal = document.createElement('div');
 petal.classList.add('flower-petal');
