@@ -159,20 +159,11 @@ animation: heartPulse 1.4s infinite;
 50% { transform: scale(1.3); }
 }
 
-/* Vertical Photo Gallery Grid */
-.photo-gallery {
+/* Photo & Video Gallery Grid Layouts (Both Vertical Portrait Style) */
+.photo-gallery, .video-gallery {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
 gap: 20px;
-width: 100%;
-margin: 20px 0;
-}
-
-/* Horizontal Video Gallery Grid */
-.video-gallery {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-gap: 22px;
 width: 100%;
 margin: 20px 0;
 }
@@ -207,19 +198,19 @@ box-shadow: 0 20px 35px rgba(140, 74, 82, 0.22);
 z-index: 10;
 }
 
-/* Photo Dimensions */
+/* Photos Styling (Vertical Portrait) */
 .polaroid img {
 width: 100%;
-height: 185px;
+height: 220px;
 object-fit: cover;
 border-radius: 3px;
 display: block;
 }
 
-/* Video Dimensions (Horizontal 16:9) */
+/* Videos Styling (Vertical Portrait - Perfect for Mobile Videos) */
 .polaroid video {
 width: 100%;
-aspect-ratio: 16 / 9;
+height: 250px;
 object-fit: cover;
 border-radius: 3px;
 display: block;
@@ -382,7 +373,7 @@ Click to begin <span>🌸</span>
 </div>
 </div>
 
-<!-- SCREEN 3: Video Polaroid Collage (Horizontal Videos) -->
+<!-- SCREEN 3: Video Polaroid Collage (Vertical Videos) -->
 <div id="screen3" class="screen">
 
 
