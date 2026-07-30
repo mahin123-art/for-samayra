@@ -27,17 +27,21 @@
       position: relative;
     }
 
+    /* Floating SVG Lilies Background Accent */
     .bg-flower {
       position: fixed;
-      width: 320px;
-      opacity: 0.25;
+      width: 280px;
+      opacity: 0.3;
       pointer-events: none;
       z-index: 0;
-      filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.05));
+      filter: drop-shadow(0px 8px 12px rgba(0,0,0,0.05));
     }
-    .bg-top-left { top: -40px; left: -40px; transform: rotate(-15deg); }
-    .bg-top-right { top: -40px; right: -40px; transform: scaleX(-1) rotate(-15deg); }
+    .bg-top-left { top: -30px; left: -30px; transform: rotate(-10deg); }
+    .bg-top-right { top: -30px; right: -30px; transform: scaleX(-1) rotate(-10deg); }
+    .bg-bottom-left { bottom: -30px; left: -30px; transform: rotate(170deg); }
+    .bg-bottom-right { bottom: -30px; right: -30px; transform: scaleX(-1) rotate(170deg); }
 
+    /* Screen Wrappers & Smooth Animations */
     .container {
       width: 100%;
       max-width: 800px;
@@ -50,8 +54,8 @@
     .screen {
       display: none;
       opacity: 0;
-      transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
-      transform: translateY(15px);
+      transform: translateY(25px) scale(0.98);
+      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
     .screen.active {
@@ -60,9 +64,10 @@
       align-items: center;
       justify-content: center;
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
 
+    /* Typography */
     h1.script-title {
       font-family: 'Great Vibes', cursive;
       font-size: 3.8rem;
@@ -80,29 +85,31 @@
       margin-bottom: 30px;
     }
 
+    /* Interactive Buttons */
     .btn {
       background: linear-gradient(135deg, #d8898f, #c7737a);
       color: #fff;
       border: none;
-      padding: 12px 28px;
-      font-size: 1.1rem;
+      padding: 12px 30px;
+      font-size: 1.15rem;
       font-family: 'Cormorant Garamond', serif;
       letter-spacing: 1px;
       border-radius: 30px;
       cursor: pointer;
       box-shadow: 0 4px 15px rgba(216, 137, 143, 0.4);
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
       display: inline-flex;
       align-items: center;
       gap: 8px;
     }
 
     .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(216, 137, 143, 0.6);
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 8px 22px rgba(216, 137, 143, 0.6);
       background: linear-gradient(135deg, #cb7c82, #b86269);
     }
 
+    /* Screen 2: Photo Collage */
     .gallery-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -117,7 +124,7 @@
       border-radius: 4px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.08);
       transform: rotate(var(--rotation));
-      transition: transform 0.3s ease;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
       position: relative;
     }
 
@@ -134,7 +141,8 @@
     }
 
     .polaroid:hover {
-      transform: scale(1.05) rotate(0deg);
+      transform: scale(1.08) rotate(0deg);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
       z-index: 5;
     }
 
@@ -145,6 +153,7 @@
       border-radius: 2px;
     }
 
+    /* Screen 3: Letter Card */
     .letter-card {
       background: #fcf8f2;
       border: 1px solid #ebdcd0;
@@ -160,22 +169,26 @@
     }
 
     .letter-card::after {
-      content: '♥';
+      content: '🌸';
       position: absolute;
       bottom: 15px;
       right: 20px;
-      font-size: 1.2rem;
-      color: #c7737a;
-      opacity: 0.5;
+      font-size: 1.3rem;
+      opacity: 0.6;
     }
 
     .click-hint {
       margin-top: 25px;
       font-style: italic;
       color: #a0787d;
-      font-size: 0.95rem;
+      font-size: 1rem;
       cursor: pointer;
       animation: pulse 2s infinite;
+      transition: color 0.3s ease;
+    }
+
+    .click-hint:hover {
+      color: #8c4a52;
     }
 
     @keyframes pulse {
@@ -183,17 +196,16 @@
       50% { opacity: 1; }
     }
 
-    .petal {
+    /* Animated Floating Petals & Flowers */
+    .lily-petal {
       position: fixed;
-      background-color: #f7d2d6;
-      border-radius: 15px 0px 15px 0px;
-      opacity: 0.7;
       pointer-events: none;
-      animation: fall 8s linear infinite;
+      animation: floatFlower 10s linear infinite;
       z-index: 1;
+      opacity: 0.7;
     }
 
-    @keyframes fall {
+    @keyframes floatFlower {
       0% {
         transform: translateY(-10vh) rotate(0deg);
         opacity: 0.8;
@@ -207,10 +219,17 @@
 </head>
 <body>
 
+  <!-- Corner Lily Illustrations -->
   <svg class="bg-flower bg-top-left" viewBox="0 0 100 100" fill="#a86b73">
     <path d="M50 0 C60 30 90 40 100 50 C70 60 60 90 50 100 C40 70 10 60 0 50 C30 40 40 10 50 0 Z"/>
   </svg>
   <svg class="bg-flower bg-top-right" viewBox="0 0 100 100" fill="#a86b73">
+    <path d="M50 0 C60 30 90 40 100 50 C70 60 60 90 50 100 C40 70 10 60 0 50 C30 40 40 10 50 0 Z"/>
+  </svg>
+  <svg class="bg-flower bg-bottom-left" viewBox="0 0 100 100" fill="#a86b73">
+    <path d="M50 0 C60 30 90 40 100 50 C70 60 60 90 50 100 C40 70 10 60 0 50 C30 40 40 10 50 0 Z"/>
+  </svg>
+  <svg class="bg-flower bg-bottom-right" viewBox="0 0 100 100" fill="#a86b73">
     <path d="M50 0 C60 30 90 40 100 50 C70 60 60 90 50 100 C40 70 10 60 0 50 C30 40 40 10 50 0 Z"/>
   </svg>
 
@@ -221,7 +240,7 @@
       <h1 class="script-title">From Mahin to Samayra</h1>
       <p class="sub-text">for the most special person in my life ♥</p>
       <button class="btn" onclick="nextScreen(2)">
-        Click to begin <span>♡</span>
+        Click to begin <span>🌸</span>
       </button>
     </div>
 
@@ -232,16 +251,16 @@
       
       <div class="gallery-container">
         <div class="polaroid" style="--rotation: -3deg;">
-          <img src="photo1.jpeg" alt="Mahin and Samayra">
+          <img src="photo1.jpg.jpeg" alt="Mahin and Samayra">
         </div>
         <div class="polaroid" style="--rotation: 2deg;">
-          <img src="photo2.jpeg" alt="Mahin and Samayra">
+          <img src="photo2.jpg.jpeg" alt="Mahin and Samayra">
         </div>
         <div class="polaroid" style="--rotation: -2deg;">
-          <img src="photo3.jpeg" alt="Mahin and Samayra">
+          <img src="photo3.jpg.jpeg" alt="Mahin and Samayra">
         </div>
         <div class="polaroid" style="--rotation: 4deg;">
-          <img src="photo4.jpeg" alt="Mahin and Samayra">
+          <img src="photo4.jpg.jpeg" alt="Mahin and Samayra">
         </div>
       </div>
 
@@ -273,40 +292,59 @@
   </div>
 
   <script>
+    // Smooth Transition Between Screens
     function nextScreen(screenNumber) {
-      const screens = document.querySelectorAll('.screen');
-      screens.forEach(screen => screen.classList.remove('active'));
-      
-      const current = document.getElementById(`screen${screenNumber}`);
-      if (current) {
-        current.classList.add('active');
+      const activeScreen = document.querySelector('.screen.active');
+      const targetScreen = document.getElementById(`screen${screenNumber}`);
+
+      if (activeScreen && targetScreen) {
+        // Fade out current screen smoothly
+        activeScreen.style.opacity = '0';
+        activeScreen.style.transform = 'translateY(-25px) scale(0.98)';
+
+        setTimeout(() => {
+          activeScreen.classList.remove('active');
+          activeScreen.style.display = 'none';
+
+          // Prepare target screen
+          targetScreen.style.display = 'flex';
+          
+          // Force reflow so browser registers display: flex
+          void targetScreen.offsetWidth;
+
+          targetScreen.classList.add('active');
+          targetScreen.style.opacity = '1';
+          targetScreen.style.transform = 'translateY(0) scale(1)';
+        }, 500); // 500ms transition time
       }
     }
 
+    // Advance to screen 3 when clicking outside polaroid frames on Screen 2
     document.getElementById('screen2').addEventListener('click', function(e) {
       if(!e.target.closest('.polaroid')) {
         nextScreen(3);
       }
     });
 
-    function createPetal() {
+    // Generate Floating Flower Petals
+    function createFlowerPetal() {
       const petal = document.createElement('div');
-      petal.classList.add('petal');
+      petal.classList.add('lily-petal');
+      petal.innerText = Math.random() > 0.5 ? '🌸' : '🌺';
       
-      const size = Math.random() * 12 + 8;
-      petal.style.width = `${size}px`;
-      petal.style.height = `${size}px`;
+      const size = Math.random() * 12 + 16;
+      petal.style.fontSize = `${size}px`;
       petal.style.left = `${Math.random() * 100}vw`;
-      petal.style.animationDuration = `${Math.random() * 5 + 5}s`;
+      petal.style.animationDuration = `${Math.random() * 6 + 6}s`;
       
       document.body.appendChild(petal);
 
       setTimeout(() => {
         petal.remove();
-      }, 10000);
+      }, 12000);
     }
 
-    setInterval(createPetal, 400);
+    setInterval(createFlowerPetal, 600);
   </script>
 </body>
 </html>
