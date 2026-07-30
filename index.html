@@ -1,350 +1,420 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>From Mahin to Samayra</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
-  
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>From Mahin to Samayra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
 
-    body {
-      font-family: 'Cormorant Garamond', serif;
-      background: #f7efe9;
-      color: #613e43;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow-x: hidden;
-      position: relative;
-    }
+<style>
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
 
-    /* Floating SVG Lilies Background Accent */
-    .bg-flower {
-      position: fixed;
-      width: 280px;
-      opacity: 0.3;
-      pointer-events: none;
-      z-index: 0;
-      filter: drop-shadow(0px 8px 12px rgba(0,0,0,0.05));
-    }
-    .bg-top-left { top: -30px; left: -30px; transform: rotate(-10deg); }
-    .bg-top-right { top: -30px; right: -30px; transform: scaleX(-1) rotate(-10deg); }
-    .bg-bottom-left { bottom: -30px; left: -30px; transform: rotate(170deg); }
-    .bg-bottom-right { bottom: -30px; right: -30px; transform: scaleX(-1) rotate(170deg); }
+body {
+font-family: 'Cormorant Garamond', serif;
+background: #f7efe9;
+color: #613e43;
+min-height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow-x: hidden;
+position: relative;
+}
 
-    /* Screen Wrappers & Smooth Animations */
-    .container {
-      width: 100%;
-      max-width: 800px;
-      padding: 20px;
-      text-align: center;
-      z-index: 10;
-      position: relative;
-    }
+/* Floating & Animated SVG Lilies Background Accent */
+.bg-flower {
+position: fixed;
+width: 260px;
+opacity: 0.35;
+pointer-events: none;
+z-index: 0;
+filter: drop-shadow(0px 8px 12px rgba(0,0,0,0.05));
+animation: floatBg 6s ease-in-out infinite alternate;
+}
+.bg-top-left { top: -20px; left: -20px; transform: rotate(-10deg); }
+.bg-top-right { top: -20px; right: -20px; transform: scaleX(-1) rotate(-10deg); animation-delay: 1s; }
+.bg-bottom-left { bottom: -20px; left: -20px; transform: rotate(170deg); animation-delay: 2s; }
+.bg-bottom-right { bottom: -20px; right: -20px; transform: scaleX(-1) rotate(170deg); animation-delay: 3s; }
 
-    .screen {
-      display: none;
-      opacity: 0;
-      transform: translateY(25px) scale(0.98);
-      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-    }
+@keyframes floatBg {
+0% { transform: translateY(0px) rotate(-10deg); }
+100% { transform: translateY(12px) rotate(-6deg); }
+}
 
-    .screen.active {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
+/* Screen Wrappers & Smooth Animations */
+.container {
+width: 100%;
+max-width: 850px;
+padding: 20px;
+text-align: center;
+z-index: 10;
+position: relative;
+}
 
-    /* Typography */
-    h1.script-title {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3.8rem;
-      font-weight: normal;
-      color: #8c4a52;
-      line-height: 1.2;
-      margin-bottom: 10px;
-      text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
-    }
+.screen {
+display: none;
+opacity: 0;
+transform: translateY(25px) scale(0.97);
+transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
 
-    p.sub-text {
-      font-size: 1.25rem;
-      color: #7a585c;
-      letter-spacing: 0.5px;
-      margin-bottom: 30px;
-    }
+.screen.active {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+opacity: 1;
+transform: translateY(0) scale(1);
+}
 
-    /* Interactive Buttons */
-    .btn {
-      background: linear-gradient(135deg, #d8898f, #c7737a);
-      color: #fff;
-      border: none;
-      padding: 12px 30px;
-      font-size: 1.15rem;
-      font-family: 'Cormorant Garamond', serif;
-      letter-spacing: 1px;
-      border-radius: 30px;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(216, 137, 143, 0.4);
-      transition: all 0.4s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
+/* Typography & Animations */
+h1.script-title {
+font-family: 'Great Vibes', cursive;
+font-size: 4rem;
+font-weight: normal;
+color: #8c4a52;
+line-height: 1.2;
+margin-bottom: 10px;
+text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.06);
+animation: gentleGlow 3s ease-in-out infinite alternate;
+}
 
-    .btn:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 8px 22px rgba(216, 137, 143, 0.6);
-      background: linear-gradient(135deg, #cb7c82, #b86269);
-    }
+@keyframes gentleGlow {
+0% { text-shadow: 0px 3px 6px rgba(140, 74, 82, 0.1); }
+100% { text-shadow: 0px 5px 15px rgba(216, 137, 143, 0.4); }
+}
 
-    /* Screen 2: Photo Collage */
-    .gallery-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
-      width: 100%;
-      margin: 20px 0;
-    }
+p.sub-text {
+font-size: 1.3rem;
+color: #7a585c;
+letter-spacing: 0.5px;
+margin-bottom: 30px;
+}
 
-    .polaroid {
-      background: #ffffff;
-      padding: 10px 10px 25px 10px;
-      border-radius: 4px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-      transform: rotate(var(--rotation));
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      position: relative;
-    }
+/* Interactive Animated Buttons */
+.btn {
+background: linear-gradient(135deg, #d8898f, #c7737a);
+color: #fff;
+border: none;
+padding: 14px 34px;
+font-size: 1.2rem;
+font-family: 'Cormorant Garamond', serif;
+letter-spacing: 1px;
+border-radius: 30px;
+cursor: pointer;
+box-shadow: 0 4px 15px rgba(216, 137, 143, 0.4);
+transition: all 0.4s ease;
+display: inline-flex;
+align-items: center;
+gap: 10px;
+position: relative;
+overflow: hidden;
+}
 
-    .polaroid::before {
-      content: '';
-      position: absolute;
-      top: -8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 40px;
-      height: 15px;
-      background: rgba(230, 220, 210, 0.7);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
+.btn:hover {
+transform: translateY(-4px) scale(1.04);
+box-shadow: 0 10px 25px rgba(216, 137, 143, 0.6);
+background: linear-gradient(135deg, #cb7c82, #b86269);
+}
 
-    .polaroid:hover {
-      transform: scale(1.08) rotate(0deg);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-      z-index: 5;
-    }
+.btn span {
+display: inline-block;
+animation: heartPulse 1.5s infinite;
+}
 
-    .polaroid img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 2px;
-    }
+@keyframes heartPulse {
+0%, 100% { transform: scale(1); }
+50% { transform: scale(1.25); }
+}
 
-    /* Screen 3: Letter Card */
-    .letter-card {
-      background: #fcf8f2;
-      border: 1px solid #ebdcd0;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-      border-radius: 8px;
-      padding: 40px 30px;
-      position: relative;
-      max-width: 650px;
-      text-align: left;
-      line-height: 1.8;
-      font-size: 1.2rem;
-      color: #4a3437;
-    }
+/* Screen 2: Photo Collage (Grid for 6 Photos) */
+.gallery-container {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+gap: 18px;
+width: 100%;
+margin: 20px 0;
+}
 
-    .letter-card::after {
-      content: '🌸';
-      position: absolute;
-      bottom: 15px;
-      right: 20px;
-      font-size: 1.3rem;
-      opacity: 0.6;
-    }
+.polaroid {
+background: #ffffff;
+padding: 10px 10px 25px 10px;
+border-radius: 4px;
+box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+transform: rotate(var(--rotation));
+transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+position: relative;
+cursor: pointer;
+}
 
-    .click-hint {
-      margin-top: 25px;
-      font-style: italic;
-      color: #a0787d;
-      font-size: 1rem;
-      cursor: pointer;
-      animation: pulse 2s infinite;
-      transition: color 0.3s ease;
-    }
+.polaroid::before {
+content: '';
+position: absolute;
+top: -8px;
+left: 50%;
+transform: translateX(-50%);
+width: 40px;
+height: 15px;
+background: rgba(230, 220, 210, 0.75);
+box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
 
-    .click-hint:hover {
-      color: #8c4a52;
-    }
+.polaroid:hover {
+transform: scale(1.1) rotate(0deg) translateY(-5px);
+box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+z-index: 5;
+}
 
-    @keyframes pulse {
-      0%, 100% { opacity: 0.6; }
-      50% { opacity: 1; }
-    }
+.polaroid img {
+width: 100%;
+height: 170px;
+object-fit: cover;
+border-radius: 2px;
+}
 
-    /* Animated Floating Petals & Flowers */
-    .lily-petal {
-      position: fixed;
-      pointer-events: none;
-      animation: floatFlower 10s linear infinite;
-      z-index: 1;
-      opacity: 0.7;
-    }
+/* Beautiful Letter Theme Upgrade */
+.letter-card {
+background: linear-gradient(145deg, #fffcf8, #f8f0e5);
+border: 1px solid rgba(216, 175, 140, 0.4);
+box-shadow: 0 15px 35px rgba(100, 60, 65, 0.08), inset 0 0 20px rgba(255, 255, 255, 0.8);
+border-radius: 12px;
+padding: 45px 35px;
+position: relative;
+max-width: 680px;
+text-align: left;
+line-height: 1.85;
+font-size: 1.25rem;
+color: #4e3539;
+transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
 
-    @keyframes floatFlower {
-      0% {
-        transform: translateY(-10vh) rotate(0deg);
-        opacity: 0.8;
-      }
-      100% {
-        transform: translateY(105vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-  </style>
+.letter-card:hover {
+transform: translateY(-3px);
+box-shadow: 0 20px 40px rgba(100, 60, 65, 0.12), inset 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+.letter-header {
+font-family: 'Great Vibes', cursive;
+font-size: 3rem;
+color: #8c4a52;
+margin-bottom: 20px;
+border-bottom: 1px solid #eadad0;
+padding-bottom: 10px;
+}
+
+.letter-card p {
+margin-bottom: 16px;
+}
+
+.letter-card::after {
+content: '🌸';
+position: absolute;
+bottom: 20px;
+right: 25px;
+font-size: 1.5rem;
+opacity: 0.7;
+animation: floatBg 4s ease-in-out infinite alternate;
+}
+
+.click-hint {
+margin-top: 25px;
+font-style: italic;
+color: #a0787d;
+font-size: 1.05rem;
+cursor: pointer;
+animation: pulse 2s infinite;
+transition: color 0.3s ease;
+}
+
+.click-hint:hover {
+color: #8c4a52;
+}
+
+@keyframes pulse {
+0%, 100% { opacity: 0.6; transform: scale(1); }
+50% { opacity: 1; transform: scale(1.02); }
+}
+
+/* Floating Petals & Flowers */
+.lily-petal {
+position: fixed;
+pointer-events: none;
+animation: floatFlower 10s linear infinite;
+z-index: 1;
+opacity: 0.75;
+}
+
+@keyframes floatFlower {
+0% {
+transform: translateY(-10vh) rotate(0deg) scale(0.8);
+opacity: 0.8;
+}
+50% {
+opacity: 1;
+}
+100% {
+transform: translateY(105vh) rotate(360deg) scale(1.2);
+opacity: 0;
+}
+}
+</style>
 </head>
 <body>
 
-  <!-- Corner Lily Illustrations -->
-  <svg class="bg-flower bg-top-left" viewBox="0 0 100 100" fill="#a86b73">
-    <path d="M50 0 C60 30 90 40 100 50 C70 60 60 90 50 100 C40 70 10 60 0 50 C30 40 40 10 50 0 Z"/>
-  </svg>
-  <svg class="bg-flower bg-top-right" viewBox="0 0 100 100" fill="#a86b73">
-    <path d="M50 0 C60 30 90 40 100 50 C70 60 60 90 50 100 C40 70 10 60 0 50 C30 40 40 10 50 0 Z"/>
-  </svg>
-  <svg class="bg-flower bg-bottom-left" viewBox="0 0 100 100" fill="#a86b73">
-    <path d="M50 0 C60 30 90 40 100 50 C70 60 60 90 50 100 C40 70 10 60 0 50 C30 40 40 10 50 0 Z"/>
-  </svg>
-  <svg class="bg-flower bg-bottom-right" viewBox="0 0 100 100" fill="#a86b73">
-    <path d="M50 0 C60 30 90 40 100 50 C70 60 60 90 50 100 C40 70 10 60 0 50 C30 40 40 10 50 0 Z"/>
-  </svg>
+<!-- Corner Lily Illustrations -->
+<svg class="bg-flower bg-top-left" viewBox="0 0 100 100" fill="#a86b73">
+<path d="M50 0 C60 30 90 40 100 50 C70 60 60 90 50 100 C40 70 10 60 0 50 C30 40 40 10 50 0 Z"/>
+</svg>
+<svg class="bg-flower bg-top-right" viewBox="0 0 100 100" fill="#a86b73">
+<path d="M50 0 C60 30 90 40 100 50 C70 60 60 90 50 100 C40 70 10 60 0 50 C30 40 40 10 50 0 Z"/>
+</svg>
+<svg class="bg-flower bg-bottom-left" viewBox="0 0 100 100" fill="#a86b73">
+<path d="M50 0 C60 30 90 40 100 50 C70 60 60 90 50 100 C40 70 10 60 0 50 C30 40 40 10 50 0 Z"/>
+</svg>
+<svg class="bg-flower bg-bottom-right" viewBox="0 0 100 100" fill="#a86b73">
+<path d="M50 0 C60 30 90 40 100 50 C70 60 60 90 50 100 C40 70 10 60 0 50 C30 40 40 10 50 0 Z"/>
+</svg>
 
-  <div class="container">
+<div class="container">
 
-    <!-- SCREEN 1 -->
-    <div id="screen1" class="screen active">
-      <h1 class="script-title">From Mahin to Samayra</h1>
-      <p class="sub-text">for the most special person in my life ♥</p>
-      <button class="btn" onclick="nextScreen(2)">
-        Click to begin <span>🌸</span>
-      </button>
-    </div>
+<!-- SCREEN 1 -->
+<div id="screen1" class="screen active">
+<h1 class="script-title">From Mahin to Samayra</h1>
+<p class="sub-text">for the most special person in my life ♥</p>
+<button class="btn" onclick="nextScreen(2)">
+Click to begin <span>🌸</span>
+</button>
+</div>
 
-    <!-- SCREEN 2 -->
-    <div id="screen2" class="screen">
-      <h1 class="script-title" style="font-size: 3rem;">Our Favorite Moments</h1>
-      <p class="sub-text" style="margin-bottom: 15px;">Every moment with you is a favorite memory.</p>
-      
-      <div class="gallery-container">
-        <div class="polaroid" style="--rotation: -3deg;">
-          <img src="photo1.jpg.jpeg" alt="Mahin and Samayra">
-        </div>
-        <div class="polaroid" style="--rotation: 2deg;">
-          <img src="photo2.jpg.jpeg" alt="Mahin and Samayra">
-        </div>
-        <div class="polaroid" style="--rotation: -2deg;">
-          <img src="photo3.jpg.jpeg" alt="Mahin and Samayra">
-        </div>
-        <div class="polaroid" style="--rotation: 4deg;">
-          <img src="photo4.jpg.jpeg" alt="Mahin and Samayra">
-        </div>
-      </div>
+<!-- SCREEN 2 -->
+<div id="screen2" class="screen">
+<h1 class="script-title" style="font-size: 3.2rem;">The Most Beautiful Girl on Earth</h1>
+<p class="sub-text" style="margin-bottom: 15px;">Every moment with you is a favorite memory.</p>
 
-      <div class="click-hint" onclick="nextScreen(3)" style="margin-top: 30px;">
-        ( Click anywhere for a small letter ♡ )
-      </div>
-    </div>
+<div class="gallery-container">
+<div class="polaroid" style="--rotation: -3deg;">
+<img src="photo1.jpg.jpeg" alt="Mahin and Samayra">
+</div>
+<div class="polaroid" style="--rotation: 2deg;">
+<img src="photo2.jpg.jpeg" alt="Mahin and Samayra">
+</div>
+<div class="polaroid" style="--rotation: -2deg;">
+<img src="photo3.jpg.jpeg" alt="Mahin and Samayra">
+</div>
+<div class="polaroid" style="--rotation: 4deg;">
+<img src="photo4.jpg.jpeg" alt="Mahin and Samayra">
+</div>
+<div class="polaroid" style="--rotation: -4deg;">
+<img src="photo5.jpg" alt="Mahin and Samayra">
+</div>
+<div class="polaroid" style="--rotation: 3deg;">
+<img src="photo6.jpg" alt="Mahin and Samayra">
+</div>
+</div>
 
-    <!-- SCREEN 3 -->
-    <div id="screen3" class="screen">
-      <div class="letter-card">
-        <h2 class="script-title" style="font-size: 2.8rem; text-align: left; margin-bottom: 15px;">To my dearest,</h2>
-        <p>
-          The best and the prettiest girl in my eyes, thank you for being the best but also the weirdest girlfriend. You stayed with me even though i make so many mistakes and make you angry every single day and i cannot thank you enough for that. I am always trying to treat you better and make you feel loved as i love you more than anything ever.
-        </p>
-        <br>
-        <p>
-          I will keep loving you forever and change my self in any way that makes you feel that i deserve a princess like you. Please never give up on me because Mahin loves you so so sooo much and i will probably go insane without you. Happy girlfriends day to my beautiful girl Samayra.
-        </p>
-      </div>
+<div class="click-hint" onclick="nextScreen(3)" style="margin-top: 25px;">
+( Click anywhere for a small letter ♡ )
+</div>
+</div>
 
-      <div style="margin-top: 30px;">
-        <button class="btn" onclick="nextScreen(1)">
-          Click to replay ↺
-        </button>
-      </div>
-    </div>
+<!-- SCREEN 3 -->
+<div id="screen3" class="screen">
+<div class="letter-card">
+<h2 class="letter-header">To the best and prettiest girl in my eyes,</h2>
 
-  </div>
+<p>
+Thank you for being the most amazing girlfriend, but also the weirdest and funniest one. Thank you for staying by my side even when I make mistakes, annoy you, or make you angry. I honestly cannot thank you enough for your patience, love, and everything you do for me.
+</p>
 
-  <script>
-    // Smooth Transition Between Screens
-    function nextScreen(screenNumber) {
-      const activeScreen = document.querySelector('.screen.active');
-      const targetScreen = document.getElementById(`screen${screenNumber}`);
+<p>
+I’m always trying to become a better person for you and make you feel loved, because you deserve nothing less. I love you more than words can explain, and I want you to always remember how special you are to me.
+</p>
 
-      if (activeScreen && targetScreen) {
-        // Fade out current screen smoothly
-        activeScreen.style.opacity = '0';
-        activeScreen.style.transform = 'translateY(-25px) scale(0.98)';
+<p>
+I promise I’ll keep loving you, caring for you, and changing myself in every way I can to become someone who truly deserves a princess like you.
+</p>
 
-        setTimeout(() => {
-          activeScreen.classList.remove('active');
-          activeScreen.style.display = 'none';
+<p>
+Please never give up on me, because Mahin loves Samayra more than anything in this world. I don’t know what I would do without you, and I’m so grateful to have you in my life.
+</p>
 
-          // Prepare target screen
-          targetScreen.style.display = 'flex';
-          
-          // Force reflow so browser registers display: flex
-          void targetScreen.offsetWidth;
+<p style="font-weight: 600; color: #8c4a52; margin-top: 20px;">
+Happy Girlfriend’s Day to my beautiful girl, Samayra. ❤️
+</p>
+</div>
 
-          targetScreen.classList.add('active');
-          targetScreen.style.opacity = '1';
-          targetScreen.style.transform = 'translateY(0) scale(1)';
-        }, 500); // 500ms transition time
-      }
-    }
+<div style="margin-top: 30px;">
+<button class="btn" onclick="nextScreen(1)">
+Click to replay ↺
+</button>
+</div>
+</div>
 
-    // Advance to screen 3 when clicking outside polaroid frames on Screen 2
-    document.getElementById('screen2').addEventListener('click', function(e) {
-      if(!e.target.closest('.polaroid')) {
-        nextScreen(3);
-      }
-    });
+</div>
 
-    // Generate Floating Flower Petals
-    function createFlowerPetal() {
-      const petal = document.createElement('div');
-      petal.classList.add('lily-petal');
-      petal.innerText = Math.random() > 0.5 ? '🌸' : '🌺';
-      
-      const size = Math.random() * 12 + 16;
-      petal.style.fontSize = `${size}px`;
-      petal.style.left = `${Math.random() * 100}vw`;
-      petal.style.animationDuration = `${Math.random() * 6 + 6}s`;
-      
-      document.body.appendChild(petal);
+<script>
+// Smooth Transition Between Screens
+function nextScreen(screenNumber) {
+const activeScreen = document.querySelector('.screen.active');
+const targetScreen = document.getElementById(`screen${screenNumber}`);
 
-      setTimeout(() => {
-        petal.remove();
-      }, 12000);
-    }
+if (activeScreen && targetScreen) {
+// Fade out current screen smoothly
+activeScreen.style.opacity = '0';
+activeScreen.style.transform = 'translateY(-25px) scale(0.97)';
 
-    setInterval(createFlowerPetal, 600);
-  </script>
+setTimeout(() => {
+activeScreen.classList.remove('active');
+activeScreen.style.display = 'none';
+
+// Prepare target screen
+targetScreen.style.display = 'flex';
+
+// Force reflow so browser registers display: flex
+void targetScreen.offsetWidth;
+
+targetScreen.classList.add('active');
+targetScreen.style.opacity = '1';
+targetScreen.style.transform = 'translateY(0) scale(1)';
+}, 500);
+}
+}
+
+// Advance to screen 3 when clicking outside polaroid frames on Screen 2
+document.getElementById('screen2').addEventListener('click', function(e) {
+if(!e.target.closest('.polaroid')) {
+nextScreen(3);
+}
+});
+
+// Generate Floating Flower Petals
+function createFlowerPetal() {
+const petal = document.createElement('div');
+petal.classList.add('lily-petal');
+
+const icons = ['🌸', '🌺', '✨', '💖'];
+petal.innerText = icons[Math.floor(Math.random() * icons.length)];
+
+const size = Math.random() * 12 + 16;
+petal.style.fontSize = `${size}px`;
+petal.style.left = `${Math.random() * 100}vw`;
+petal.style.animationDuration = `${Math.random() * 6 + 6}s`;
+
+document.body.appendChild(petal);
+
+setTimeout(() => {
+petal.remove();
+}, 12000);
+}
+
+setInterval(createFlowerPetal, 500);
+</script>
 </body>
 </html>
+
