@@ -24,26 +24,26 @@ justify-content: center;
 align-items: center;
 overflow-x: hidden;
 position: relative;
-background-color: #1a1213;
+background-color: #1a0d14;
 }
 
-/* Live Moving Picture Background (White Roses & Lilies) */
+/* Live Moving Background Focused on True Oriental/Stargazer Lilies */
 .bg-moving-picture {
 position: fixed;
 top: -5%;
 left: -5%;
 width: 110vw;
 height: 110vh;
-background-image: linear-gradient(rgba(20, 10, 12, 0.4), rgba(20, 10, 12, 0.45)),
-url('https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=1920&auto=format&fit=crop');
+background-image: linear-gradient(rgba(25, 10, 18, 0.45), rgba(18, 10, 15, 0.55)),
+url('https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1920&auto=format&fit=crop');
 background-size: cover;
 background-position: center;
 z-index: 0;
-animation: kenburnsBg 25s ease-in-out infinite alternate;
-filter: brightness(0.9) contrast(1.05);
+animation: kenburnsStargazer 25s ease-in-out infinite alternate;
+filter: brightness(0.9) contrast(1.08);
 }
 
-@keyframes kenburnsBg {
+@keyframes kenburnsStargazer {
 0% {
 transform: scale(1) translate(0, 0);
 }
@@ -55,26 +55,26 @@ transform: scale(1.15) translate(15px, 10px);
 }
 }
 
-/* Overlay Overlay to make text perfectly readable */
+/* Darker romantic vignette overlay to make cards & text pop */
 .bg-overlay {
 position: fixed;
 top: 0;
 left: 0;
 width: 100vw;
 height: 100vh;
-background: radial-gradient(circle at center, rgba(255, 255, 255, 0.25) 0%, rgba(30, 15, 20, 0.5) 100%);
+background: radial-gradient(circle at center, rgba(255, 255, 255, 0.15) 0%, rgba(20, 8, 14, 0.65) 100%);
 z-index: 1;
 pointer-events: none;
 }
 
-/* Floating & Animated Decorative Corner Accents */
+/* Floating Corner Accents (Stylized True Lily Star Shapes) */
 .bg-flower {
 position: fixed;
-width: 260px;
+width: 250px;
 opacity: 0.65;
 pointer-events: none;
 z-index: 2;
-filter: drop-shadow(0px 8px 20px rgba(0, 0, 0, 0.3));
+filter: drop-shadow(0px 8px 20px rgba(0, 0, 0, 0.45));
 animation: floatBg 6s ease-in-out infinite alternate;
 }
 .bg-top-left { top: -20px; left: -20px; transform: rotate(-12deg); }
@@ -87,7 +87,7 @@ animation: floatBg 6s ease-in-out infinite alternate;
 100% { transform: translateY(15px) rotate(-5deg) scale(1.04); }
 }
 
-/* Screen Wrappers & Smooth Animations */
+/* Screen Containers */
 .container {
 width: 100%;
 max-width: 880px;
@@ -113,7 +113,7 @@ opacity: 1;
 transform: translateY(0) scale(1);
 }
 
-/* Typography & Shimmer Animations */
+/* Typography & Shimmer Effects */
 h1.script-title {
 font-family: 'Great Vibes', cursive;
 font-size: 4.4rem;
@@ -122,12 +122,12 @@ color: #ffffff;
 line-height: 1.2;
 margin-bottom: 12px;
 animation: gentleGlow 3.5s ease-in-out infinite alternate;
-text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6);
+text-shadow: 0px 4px 18px rgba(0, 0, 0, 0.8);
 }
 
 @keyframes gentleGlow {
-0% { text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6); transform: scale(1); }
-100% { text-shadow: 0px 6px 25px rgba(255, 215, 220, 0.9); transform: scale(1.02); }
+0% { text-shadow: 0px 4px 18px rgba(0, 0, 0, 0.8); transform: scale(1); }
+100% { text-shadow: 0px 6px 28px rgba(255, 180, 200, 0.95); transform: scale(1.02); }
 }
 
 p.sub-text {
@@ -135,7 +135,7 @@ font-size: 1.4rem;
 color: #fcebe8;
 letter-spacing: 0.5px;
 margin-bottom: 30px;
-text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.7);
+text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.8);
 animation: fadeInText 2s ease-in-out;
 }
 
@@ -146,7 +146,7 @@ to { opacity: 1; transform: translateY(0); }
 
 /* Animated Glow Buttons */
 .btn {
-background: linear-gradient(135deg, #e8a5a9, #c7737a);
+background: linear-gradient(135deg, #e895a2, #be5b69);
 color: #fff;
 border: none;
 padding: 16px 42px;
@@ -155,7 +155,7 @@ font-family: 'Cormorant Garamond', serif;
 letter-spacing: 1px;
 border-radius: 30px;
 cursor: pointer;
-box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 display: inline-flex;
 align-items: center;
@@ -171,7 +171,7 @@ top: -50%;
 left: -50%;
 width: 200%;
 height: 200%;
-background: linear-gradient(60deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+background: linear-gradient(60deg, transparent, rgba(255, 255, 255, 0.45), transparent);
 transform: rotate(30deg);
 transition: transform 0.8s ease;
 }
@@ -182,8 +182,8 @@ transform: translate(100%, 100%) rotate(30deg);
 
 .btn:hover {
 transform: translateY(-5px) scale(1.06);
-box-shadow: 0 14px 30px rgba(216, 137, 143, 0.65);
-background: linear-gradient(135deg, #df9196, #b86269);
+box-shadow: 0 14px 30px rgba(232, 149, 162, 0.65);
+background: linear-gradient(135deg, #f0a3af, #ad4a58);
 }
 
 .btn span {
@@ -196,7 +196,7 @@ animation: heartPulse 1.4s infinite;
 50% { transform: scale(1.3); }
 }
 
-/* Photo & Video Gallery Grid Layouts */
+/* Photo & Video Polaroid Grid Layouts */
 .photo-gallery, .video-gallery {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -205,12 +205,11 @@ width: 100%;
 margin: 20px 0;
 }
 
-/* Polaroid Framing */
 .polaroid {
 background: #ffffff;
 padding: 12px 12px 28px 12px;
 border-radius: 6px;
-box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
 transform: rotate(var(--rotation));
 transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 position: relative;
@@ -232,13 +231,13 @@ left: 50%;
 transform: translateX(-50%);
 width: 45px;
 height: 18px;
-background: rgba(240, 230, 225, 0.85);
-box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+background: rgba(245, 230, 235, 0.85);
+box-shadow: 0 2px 4px rgba(0,0,0,0.12);
 }
 
 .polaroid:hover {
 transform: scale(1.1) rotate(0deg) translateY(-10px) !important;
-box-shadow: 0 22px 45px rgba(0, 0, 0, 0.4);
+box-shadow: 0 22px 45px rgba(0, 0, 0, 0.5);
 z-index: 20;
 }
 
@@ -258,11 +257,11 @@ border-radius: 3px;
 display: block;
 }
 
-/* Letter Card */
+/* Unfolding Romantic Letter Card */
 .letter-card {
-background: linear-gradient(145deg, #ffffff, #fdf8f3);
-border: 1px solid rgba(220, 180, 180, 0.5);
-box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35), inset 0 0 30px rgba(255, 255, 255, 0.9);
+background: linear-gradient(145deg, #ffffff, #fff8f9);
+border: 1px solid rgba(225, 170, 180, 0.5);
+box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 0 30px rgba(255, 255, 255, 0.95);
 border-radius: 16px;
 padding: 48px 38px;
 position: relative;
@@ -270,7 +269,7 @@ max-width: 700px;
 text-align: left;
 line-height: 1.85;
 font-size: 1.28rem;
-color: #4e3539;
+color: #4e3238;
 animation: unfoldLetter 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards, letterGlow 4s ease-in-out infinite alternate;
 }
 
@@ -280,16 +279,16 @@ animation: unfoldLetter 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards, letterGlow 
 }
 
 @keyframes letterGlow {
-0% { box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); }
-100% { box-shadow: 0 22px 50px rgba(220, 150, 155, 0.5); }
+0% { box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35); }
+100% { box-shadow: 0 22px 50px rgba(232, 149, 162, 0.45); }
 }
 
 .letter-header {
 font-family: 'Great Vibes', cursive;
 font-size: 3.5rem;
-color: #8c4a52;
+color: #8c3f4a;
 margin-bottom: 22px;
-border-bottom: 1px solid #eadad0;
+border-bottom: 1px solid #ead0d5;
 padding-bottom: 12px;
 }
 
@@ -298,7 +297,7 @@ margin-bottom: 18px;
 }
 
 .letter-card::after {
-content: '🪷';
+content: '🌸';
 position: absolute;
 bottom: 20px;
 right: 25px;
@@ -311,7 +310,7 @@ animation: floatBg 4s ease-in-out infinite alternate;
 margin-top: 25px;
 font-style: italic;
 color: #ffffff;
-text-shadow: 0px 2px 8px rgba(0,0,0,0.8);
+text-shadow: 0px 2px 8px rgba(0,0,0,0.85);
 font-size: 1.2rem;
 cursor: pointer;
 animation: hintPulse 2s infinite;
@@ -319,7 +318,7 @@ transition: color 0.3s ease;
 }
 
 .click-hint:hover {
-color: #f8c0c8;
+color: #ffc2cd;
 }
 
 @keyframes hintPulse {
@@ -327,7 +326,7 @@ color: #f8c0c8;
 50% { opacity: 1; transform: scale(1.04); }
 }
 
-/* Emoji Petals Animation Overlay */
+/* Floating Petals & Sparkles Overlay */
 .flower-petal {
 position: fixed;
 pointer-events: none;
@@ -353,26 +352,26 @@ opacity: 0;
 </head>
 <body>
 
-<!-- Live Moving Background Image -->
+<!-- Live Moving Stargazer Lily Background Image -->
 <div class="bg-moving-picture"></div>
 <div class="bg-overlay"></div>
 
-<!-- Corner Flowers -->
-<svg class="bg-flower bg-top-left" viewBox="0 0 100 100" fill="#ffffff">
-<path d="M50 0 C55 25 75 35 100 50 C75 65 55 75 50 100 C45 75 25 65 0 50 C25 35 45 25 50 0 Z"/>
-<circle cx="50" cy="50" r="7" fill="#f8d7da"/>
+<!-- Corner Lily SVGs -->
+<svg class="bg-flower bg-top-left" viewBox="0 0 100 100" fill="#f4a8b5">
+<path d="M50 5 L60 38 L95 50 L60 62 L50 95 L40 62 L5 50 L40 38 Z"/>
+<circle cx="50" cy="50" r="8" fill="#ffffff"/>
 </svg>
-<svg class="bg-flower bg-top-right" viewBox="0 0 100 100" fill="#ffffff">
-<path d="M50 0 C55 25 75 35 100 50 C75 65 55 75 50 100 C45 75 25 65 0 50 C25 35 45 25 50 0 Z"/>
-<circle cx="50" cy="50" r="7" fill="#f8d7da"/>
+<svg class="bg-flower bg-top-right" viewBox="0 0 100 100" fill="#f4a8b5">
+<path d="M50 5 L60 38 L95 50 L60 62 L50 95 L40 62 L5 50 L40 38 Z"/>
+<circle cx="50" cy="50" r="8" fill="#ffffff"/>
 </svg>
-<svg class="bg-flower bg-bottom-left" viewBox="0 0 100 100" fill="#ffffff">
-<path d="M50 0 C55 25 75 35 100 50 C75 65 55 75 50 100 C45 75 25 65 0 50 C25 35 45 25 50 0 Z"/>
-<circle cx="50" cy="50" r="7" fill="#f8d7da"/>
+<svg class="bg-flower bg-bottom-left" viewBox="0 0 100 100" fill="#f4a8b5">
+<path d="M50 5 L60 38 L95 50 L60 62 L50 95 L40 62 L5 50 L40 38 Z"/>
+<circle cx="50" cy="50" r="8" fill="#ffffff"/>
 </svg>
-<svg class="bg-flower bg-bottom-right" viewBox="0 0 100 100" fill="#ffffff">
-<path d="M50 0 C55 25 75 35 100 50 C75 65 55 75 50 100 C45 75 25 65 0 50 C25 35 45 25 50 0 Z"/>
-<circle cx="50" cy="50" r="7" fill="#f8d7da"/>
+<svg class="bg-flower bg-bottom-right" viewBox="0 0 100 100" fill="#f4a8b5">
+<path d="M50 5 L60 38 L95 50 L60 62 L50 95 L40 62 L5 50 L40 38 Z"/>
+<circle cx="50" cy="50" r="8" fill="#ffffff"/>
 </svg>
 
 <div class="container">
@@ -461,7 +460,7 @@ I promise I’ll keep loving you, caring for you, and changing myself in every w
 Please never give up on me, because Mahin loves Samayra more than anything in this world. I don’t know what I would do without you, and I’m so grateful to have you in my life.
 </p>
 
-<p style="font-weight: 600; color: #8c4a52; margin-top: 22px;">
+<p style="font-weight: 600; color: #8c3f4a; margin-top: 22px;">
 Happy Girlfriend’s Day to my beautiful girl, Samayra. ❤️
 </p>
 </div>
@@ -517,12 +516,12 @@ document.getElementById('screen3').addEventListener('click', function(e) {
 if (!e.target.closest('.polaroid')) nextScreen(4);
 });
 
-// Floating Lilies and White Roses Petals Effect
+// Floating Petals & Floral Accent Animation Overlay
 function createFlowerPetal() {
 const petal = document.createElement('div');
 petal.classList.add('flower-petal');
 
-const floralIcons = ['🪷', '🌹', '🤍', '✨', '🌸', '🪷'];
+const floralIcons = ['🌸', '🌺', '🤍', '✨', '🌸', '🌹'];
 petal.innerText = floralIcons[Math.floor(Math.random() * floralIcons.length)];
 
 const size = Math.random() * 14 + 18;
